@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akhlak Mulia, Cermin Iman - Platform PLE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #0d5c46;
+            --secondary-color: #1a936f;
+            --accent-color: #f39c12;
+            --bg-color: #f7f9fa;
+            --text-dark: #2c3e50;
+            --text-light: #ffffff;
+            --card-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Header & Navigasi */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--text-light);
+            padding: 20px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            max-height: 50px; /* Saiz logo */
+        }
+
+        .logo-text h1 {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text p {
+            font-size: 11px;
+            opacity: 0.8;
+            font-style: italic;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 15px;
+        }
+
+        nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: var(--accent-color);
+        }
+
+        /* Hero Banner */
+        .hero {
+            background: #ffffff;
+            border-bottom: 1px solid #eef2f3;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            padding: 0; /* Gambar latar belakang */
+            height: 300px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-bg-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.15; /* Untuk nampak teks */
+        }
+
+        .hero h2 {
+            font-size: 32px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero p {
+            font-size: 16px;
+            color: #7f8c8d;
+            max-width: 700px;
+            margin: 0 auto 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .badge-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .badge {
+            background: #e8f5e9;
+            color: var(--primary-color);
+            padding: 6px 15px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid rgba(13, 92, 70, 0.2);
+        }
+
+        /* Main Content Container */
+        main {
+            padding: 40px 5%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Grid Utama Dashboard */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid #eef2f3;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 18px;
+            border-bottom: 2px solid #f1f2f6;
+            padding-bottom: 10px;
+            width: 100%;
+        }
+
+        .card-img {
+            max-height: 100px;
+            margin-bottom: 15px;
+        }
+
+        /* Pemain Audio Dashboard */
+        .audio-section {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid #eef2f3;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .audio-section h3 {
+            color: var(--primary-color);
+            font-size: 16px;
+        }
+
+        .audio-controls {
+            flex-grow: 1;
+        }
+
+        audio {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        /* Sistem Akordion Modul */
+        .accordion-item {
+            background: #ffffff;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            border: 1px solid #eef2f3;
+        }
+
+        .accordion-header {
+            background: #ffffff;
+            padding: 18px 20px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
+
+        .accordion-header:hover {
+            background: #f7f9fa;
+            color: var(--secondary-color);
+        }
+
+        .accordion-header .modul-tag {
+            background: var(--primary-color);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            margin-right: 10px;
+        }
+
+        .accordion-content {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background: #fafbfc;
+        }
+
+        .accordion-content-inner {
+            padding: 20px 0;
+        }
+
+        /* Reka Bentuk Simulasi Chatbot AI */
+        .chat-container {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            max-width: 700px;
+            margin: 0 auto;
+            overflow: hidden;
+            border: 1px solid #eef2f3;
+        }
+
+        .chat-header {
+            background: var(--primary-color);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .chat-header .status {
+            width: 10px;
+            height: 10px;
+            background: #2ecc71;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .chat-box {
+            height: 350px;
+            padding: 20px;
+            overflow-y: auto;
+            background: #f5f6fa;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 12px 16px;
+            border-radius: 15px;
+            font-size: 14px;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        .message.bot {
+            background: white;
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .bot-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+
+        .message.user {
+            background: var(--secondary-color);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 2px;
+            justify-content: flex-end;
+        }
+
+        .chat-suggestions {
+            padding: 10px 20px;
+            background: #fff;
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .suggest-btn {
+            background: #f1f2f6;
+            border: 1px solid #ddd;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .suggest-btn:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Papan Komuniti (Simulasi Padlet) */
+        .board-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .board-note {
+            background: #fff9db;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--accent-color);
+            position: relative;
+        }
+
+        .board-note:nth-child(even) {
+            background: #e8f5e9;
+            border-left-color: var(--secondary-color);
+        }
+
+        .board-note .author {
+            font-size: 12px;
+            font-weight: 600;
+            color: #7f8c8d;
+            margin-top: 15px;
+            display: block;
+            text-align: right;
+        }
+
+        /* OER Hub Styling */
+        .oer-list {
+            list-style: none;
+        }
+
+        .oer-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            background: #fff;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            border: 1px solid #eee;
+        }
+
+        .oer-logo {
+            max-height: 30px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .oer-type {
+            font-size: 11px;
+            background: #e1f5fe;
+            color: #0288d1;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        .btn-download, .btn-play {
+            background: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            padding: 6px 16px;
+            border-radius: 4px;
+            font-size: 12px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-play {
+            background: var(--accent-color);
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 13px;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 15px; text-align: center; }
+            nav ul { flex-wrap: wrap; justify-content: center; }
+            .hero h2 { font-size: 24px; }
+            .hero { height: auto; padding: 50px 5%; }
+            .hero-bg-img { display: none; } /* Sembunyi gambar latar di mobile */
+            .audio-section { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-area">
+            <img src="logo.png" alt="Logo Akhlak Mulia" class="logo-img">
+            <div class="logo-text">
+                <h1>Akhlak Mulia, Cermin Iman</h1>
+                <p>Memperkasa Integrasi Teknologi Digital melalui Pembelajaran Bermakna</p>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a onclick="switchTab('dashboard')" id="nav-dashboard" class="active">Utama</a></li>
+                <li><a onclick="switchTab('modul')" id="nav-modul">Modul Pembelajaran</a></li>
+                <li><a onclick="switchTab('oer')" id="nav-oer">Hab Sumber (OER)</a></li>
+                <li><a onclick="switchTab('ai-bot')" id="nav-ai-bot">Pembantu AI</a></li>
+                <li><a onclick="switchTab('komuniti')" id="nav-komuniti">Papan Komuniti</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <img src="serene_learning.jpg" alt="Latar Belakang Pembelajaran" class="hero-bg-img">
+        <h2>Persekitaran Pembelajaran Diperibadikan (PLE)</h2>
+        <p>Sebuah platform digital kendiri bersepadu bagi mendalami adab-adab dan sunnah Rasulullah SAW dalam kehidupan harian serta pemantapan kesantunan berbahasa.</p>
+        <div class="badge-container">
+            <span class="badge">Kursus Silang: BMMB1144 Kesantunan Berbahasa</span>
+            <span class="badge">Sasaran: Pelajar IPT / Dewasa</span>
+            <span class="badge">Berteraskan AI & OER</span>
+        </div>
+    </div>
+
+    <main>
+
+        <div id="dashboard" class="tab-content active">
+            
+            <div class="audio-section">
+                <h3>🔊 Dengarkan Selamat Datang</h3>
+                <div class="audio-controls">
+                    <audio id="main-player" controls>
+                        <source src="intro_sunnah.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+            </div>
+
+            <div class="grid-3">
+                <div class="card">
+                    <img src="user_learning.png" alt="Ilustrasi Belajar Kendiri" class="card-img">
+                    <h3>🎯 Selamat Datang ke PLE Anda</h3>
+                    <p>Platform ini direka untuk menyokong <strong>pembelajaran bermakna</strong> secara fleksibel. Anda boleh mengatur tempo pembelajaran anda sendiri, mengakses sumber terbuka terkurasi, dan menguji kefahaman secara interaktif.</p>
+                </div>
+                <div class="card">
+                    <img src="speech_handshake.png" alt="Ilustrasi Komunikasi" class="card-img">
+                    <h3>📢 Fokus Interdisiplinari</h3>
+                    <p>Melalui integrasi bersama kursus <strong>BMMB1144 (Kesantunan Berbahasa)</strong>, anda akan melihat bagaimana adab komunikasi Islam bersinergi dengan nilai murni kesantunan bahasa Melayu moden.</p>
+                </div>
+                <div class="card">
+                    <img src="process_flow.png" alt="Ilustrasi Carta Cara" class="card-img">
+                    <h3>💡 Cara Mula Belajar</h3>
+                    <p>1. Layari menu <strong>Modul Pembelajaran</strong> untuk melihat rangka topik.<br>
+                    2. Teroka <strong>Hab Sumber</strong> untuk muat turun bahan OER.<br>
+                    3. Gunakan <strong>Pembantu AI</strong> untuk simulasi soal jawab adab harian.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="modul" class="tab-content">
+            <h2 style="margin-bottom: 20px; color: var(--primary-color);">Rangka Topik & Modul Pembelajaran</h2>
+            
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div><span class="modul-tag">Modul 1</span> Mukaddimah & Orientasi PLE</div>
+                    <span>▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <p><strong>Topik 1.1: Pengenalan "Akhlak Mulia, Cermin Iman"</strong><br>Konsep asas Akhlak, Adab, dan Sunnah sebagai paksi utama pembentukan karakter mahasiswa Muslim mendepani era digital.</p><br>
+                        <p><strong>Topik 1.2: Panduan Navigasi PLE Kendiri</strong><br>Tatacara optimum menguruskan masa belajar kendiri (Self-Directed Learning) berpandukan ekosistem platform.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div><span class="modul-tag">Modul 2</span> Kesantunan Berbahasa & Adab Berkomunikasi (BMMB1144)</div>
+                    <span>▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <p><strong>Topik 2.1: Sunnah Rasulullah dalam Berbicara</strong><br>Mencontohi sifat Siddiq dan Amanah, menghindari manipulasi fakta, ghibah, dan kepentingan memilih kalimat terbaik.</p><br>
+                        <p><strong>Topik 2.2: Kesantunan Berbahasa Melayu vs Adab Islamiah</strong><br>Analisis komparatif silang budaya antara kelembutan sistem sapaan Melayu dengan tuntutan syarak.</p><br>
+                        <p><strong>Topik 2.3: Adab Komunikasi Digital & Media Sosial (Netiquette)</strong><br>Aplikasi praktikal prinsip <i>Tabayyun</i> sebelum menongkah arus perkongsian maklumat dan adab menulis ulasan/komen di alam maya.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div><span class="modul-tag">Modul 3</span> Sunnah dalam Pengurusan Diri & Produktiviti Akademik</div>
+                    <span>▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <p><strong>Topik 3.1: Rutin Harian Rasulullah (24 Jam Kehidupan)</strong><br>Mengadaptasi adab bermula daripada bangun tidur, pemakanan sihat, sehinggalah adab merehatkan tubuh badan.</p><br>
+                        <p><strong>Topik 3.2: Produktiviti Gaya Profetik untuk Mahasiswa</strong><br>Teknik pengurusan stres, mengelakkan penangguhan tugasan (Procrastination), serta penjagaan kesihatan mental berasaskan amalan zikir dan doa harian.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div><span class="modul-tag">Modul 4</span> Adab Kemasyarakatan & Hubungan Profesional</div>
+                    <span>▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <p><strong>Topik 4.1: Hubungan Tiga Dimensi: Ibu Bapa, Pensyarah & Rakan Sebaya</strong><br>Menjaga garis kesantunan dalam interaksi formal kampus dan interaksi tidak formal bersama keluarga.</p><br>
+                        <p><strong>Topik 4.2: Kepimpinan Berteraskan Sifat Rahmah</strong><br>Bagaimana mahasiswa IPT mampu berbakti menjadi ejen perubahan berakhlak mulia mengikut acuan kepimpinan Nabi Muhammad SAW.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div><span class="modul-tag">Modul 5</span> Ruang Refleksi & Penilaian Kendiri</div>
+                    <span>▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <p><strong>Topik 5.1: Penjurnalan Adab Digital (Digital Adab Journal)</strong><br>Ruang refleksi kendiri mingguan bagi menilai sejauh mana amalan sunnah berjaya diterjemahkan dalam tindakan realistik.</p><br>
+                        <p><strong>Topik 5.2: Hub Kolaboratif & Penilaian Komuniti</strong><br>Perkongsian artifak pembelajaran (infografik/video pendek) sesama rakan sepejuangan bagi memupuk pembelajaran bermakna secara kolektif.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="oer" class="tab-content">
+            <img src="oer_logo.png" alt="OER Logo" class="oer-logo"> <h2 style="margin-bottom: 20px; color: var(--primary-color);">Hab Sumber Terbuka (OER Hub)</h2>
+            <p style="margin-bottom: 20px;">Bahan-bahan di bawah dikumpul secara beretika berlesenkan <i>Creative Commons</i> untuk kegunaan pendidikan percuma.</p>
+            
+            <ul class="oer-list">
+                <li class="oer-item">
+                    <div>
+                        <span class="oer-type">E-Buku</span>
+                        <strong>Kitab Syamail Muhammadiyah (Ringkasan Adab Nabi)</strong>
+                    </div>
+                    <a href="#" class="btn-download">Buka Sumber</a>
+                </li>
+                <li class="oer-item">
+                    <div>
+                        <span class="oer-type">Artikel Jurnal</span>
+                        <strong>Integrasi Kesantunan Berbahasa Melayu dalam Komunikasi Digital Mahasiswa</strong>
+                    </div>
+                    <a href="#" class="btn-download">Baca Jurnal</a>
+                </li>
+                <li class="oer-item">
+                    <div>
+                        <span class="oer-type">Infografik</span>
+                        <strong>Carta Alir Sunnah Harian & Produktiviti Masa IPT</strong>
+                    </div>
+                    <a href="#" class="btn-download">Lihat</a>
+                </li>
+                <li class="oer-item">
+                    <div>
+                        <span class="oer-type">Video Kuliah</span>
+                        <strong>Konsep Tabayyun Menapis Berita Palsu Berdasarkan Surah Al-Hujurat</strong>
+                    </div>
+                    <a href="#" class="btn-download">Tonton</a>
+                </li>
+                
+                <li class="oer-item">
+                    <div>
+                        <span class="oer-type">Audio</span>
+                        <strong>Dengarkan Sunnah Hari Ini (Hadith Amalan Harian)</strong>
+                    </div>
+                    <button class="btn-play" onclick="controlPlayer('sunnah_hari_ini.mp3', event)">Dengar</button>
+                </li>
+            </ul>
+        </div>
+
+        <div id="ai-bot" class="tab-content">
+            <h2 style="margin-bottom: 20px; color: var(--primary-color);">Simulasi Pembantu AI Adab & Kesantunan</h2>
+            <p style="margin-bottom: 20px;">Uji pemahaman adab anda atau minta nasihat amalan sunnah harian daripada ejen kecerdasan buatan pintar ini.</p>
+            
+            <div class="chat-container">
+                <div class="chat-header">
+                    <div class="status"></div>
+                    <strong>Bot AI Adab (Penasihat Maya)</strong>
+                </div>
+                <div class="chat-box" id="chatBox">
+                    <div class="message bot">
+                        <img src="bot_avatar.png" alt="Bot Avatar" class="bot-avatar">
+                        <div>Assalamualaikum! Saya ialah Pembantu AI "Akhlak Mulia, Cermin Iman". Sila pilih salah satu soalan lazim di bawah atau klik untuk melihat bagaimana saya boleh membantu anda merancang amalan adab harian.</div>
+                    </div>
+                </div>
+                <div class="chat-suggestions">
+                    <button class="suggest-btn" onclick="sendSimulatedMessage('Bagaimanakah adab sunnah menegur rakan di media sosial?')">Adab di Media Sosial</button>
+                    <button class="suggest-btn" onclick="sendSimulatedMessage('Berikan sunnah Rasulullah dalam menguruskan masa belajar.')">Sunnah Urus Masa Belajar</button>
+                    <button class="suggest-btn" onclick="sendSimulatedMessage('Apakah contoh kesantunan berbahasa dengan pensyarah?')">Kesantunan dengan Pensyarah</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="komuniti" class="tab-content">
+            <h2 style="margin-bottom: 20px; color: var(--primary-color);">Papan Kolaboratif Komuniti</h2>
+            <p style="margin-bottom: 20px;">Ruang perkongsian idea utama, nota ringkas, dan refleksi pembelajaran bermakna oleh para pelajar IPT.</p>
+            
+            <div class="board-grid">
+                <div class="board-note">
+                    <p>"BMMB1144 mengajar kita merendah diri dalam bahasa, manakala sunnah mengajar kita merendah diri dalam hati. Kombinasi yang sangat mantap untuk mahasiswa digital!"</p>
+                    <span class="author">- Ahmad Faiz, Pelajar Tahun 1</span>
+                </div>
+                <div class="board-note">
+                    <p>"Amalan kegemaran saya selepas membaca Modul 3 ialah tidur awal pasca-Isyak untuk bangun mentadabbur al-Quran sebelum subuh. Fokus belajar jadi makin tajam."</p>
+                    <span class="author">- Siti Norhaliza, Pelajar IPTA</span>
+                </div>
+                <div class="board-note">
+                    <p>"Konsep Tabayyun di media sosial sangat kritikal sekarang. Jangan jadi ejen penyebar fitnah berbalut hantaran viral."</p>
+                    <span class="author">- Haziq Luqman, Pendidik Pelatih</span>
+                </div>
+                <div class="board-note">
+                    <p>"Sentiasa pastikan e-mel kepada pensyarah dimulakan dengan salam, kata sapaan yang hormat, dan bahasa yang jernih. Itu cerminan peribadi profesional."</p>
+                    <span class="author">- Dr. Radzi, Mentor Akademik</span>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Platform PLE Akhlak Mulia, Cermin Iman | Projek Individu Tugasan 2</p>
+    </footer>
+
+    <script>
+        const player = document.getElementById('main-player');
+
+        // Fungsi Penukaran Tab Navigasi
+        function switchTab(tabId) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            const links = document.querySelectorAll('nav ul li a');
+            links.forEach(link => link.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            document.getElementById('nav-' + tabId).classList.add('active');
+        }
+
+        // Fungsi Akordion untuk Modul
+        function toggleAccordion(element) {
+            element.classList.toggle('active');
+            const content = element.nextElementSibling;
+            const icon = element.querySelector('span:last-child');
+            
+            if (content.style.maxHeight && content.style.maxHeight !== "0px") {
+                content.style.maxHeight = "0px";
+                icon.textContent = "▼";
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+                icon.textContent = "▲";
+            }
+        }
+
+        // Fungsi Simulasi Chatbot AI
+        function sendSimulatedMessage(userText) {
+            const chatBox = document.getElementById('chatBox');
+            
+            const userDiv = document.createElement('div');
+            userDiv.className = 'message user';
+            userDiv.innerHTML = `<div>${userText}</div>`;
+            chatBox.appendChild(userDiv);
+            
+            chatBox.scrollTop = chatBox.scrollHeight;
+            
+            setTimeout(() => {
+                const botDiv = document.createElement('div');
+                botDiv.className = 'message bot';
+                
+                // Pastikan anda menggantikan 'bot_avatar.png'
+                let botResponseHeader = '<img src="bot_avatar.png" alt="Bot Avatar" class="bot-avatar">';
+                let botResponseBody = "Maaf, saya sedang memproses pangkalan data adab saya.";
+                
+                if (userText.includes('media sosial')) {
+                    botResponseBody = "<div><strong>Respons AI Adab:</strong> Sesuai dengan pengintegrasian <strong>BMMB1144 (Kesantunan Berbahasa)</strong>, adab menegur hendaklah mematuhi prinsip <i>Tabayyun</i> (selidik) dan menggunakan saluran peribadi (DM) berbanding komen terbuka. Gunakan kata sapaan yang lunak tanpa elemen menjatuhkan air muka, mencontohi sunnah Nabi SAW yang menegur secara umum (<i>'Mengapakah ada kaum yang berbuat demikian...'</i>) tanpa memetik nama peribadi secara langsung.</div>";
+                } else if (userText.includes('masa belajar')) {
+                    botResponseBody = "<div><strong>Respons AI Adab:</strong> Sunnah utama Rasulullah SAW dalam pengurusan masa adalah memanfaatkan waktu awal pagi (keberkatan waktu pagi). Mahasiswa digalakkan menyusun jadual belajar yang tidak bertembung dengan waktu solat, mengambil rehat ringkas (<i>Qailulah</i>) sebelum zohor untuk memulihkan tenaga kognitif, dan mengelakkan budaya berjaga malam (<i>night owl</i>) yang sia-sia bagi mengekalkan kestabilan kesihatan mental.</div>";
+                } else if (userText.includes('pensyarah')) {
+                    botResponseBody = "<div><strong>Respons AI Adab:</strong> Kesantunan berbahasa bersama pensyarah melibatkan penggunaan gelaran akademik yang betul (cth: Prof/Dr/Tuan) dalam e-mel mahupun aplikasi WhatsApp. Elakkan penggunaan bahasa pesanan ringkas yang terlalu kasual (cth: 'sis', 'bro', 'u') serta pilihlah masa komunikasi yang wajar (waktu bekerja) bagi menghormati hak privasi dan masa rehat mereka.</div>";
+                }
+                
+                botDiv.innerHTML = botResponseHeader + botResponseBody;
+                chatBox.appendChild(botDiv);
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }, 1000);
+        }
+
+        // Fungsi Kawalan Pemain Audio dari OER
+        function controlPlayer(audioFile, event) {
+            player.src = audioFile; // Tukar sumber fail audio
+            player.play(); // Mainkan fail audio
+            // Optional: Tukar teks punat OER kepada 'Sedang Dimainkan'
+            event.target.textContent = 'Sedang Dimainkan...';
+            // Pastikan tab Utama dipilih untuk melihat pemain
+            switchTab('dashboard');
+        }
+    </script>
+</body>
+</html>
